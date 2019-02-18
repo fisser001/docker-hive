@@ -17,14 +17,6 @@ To deploy in Docker Swarm:
     docker stack deploy -c docker-compose.yml hive
 ```
 
-To run a PrestoDB 0.181 with Hive connector:
-
-```
-  docker-compose up -d presto-coordinator
-```
-
-This deploys a Presto server listens on port `8080`
-
 ## Testing
 Load data into Hive:
 ```
@@ -33,17 +25,3 @@ Load data into Hive:
   > CREATE TABLE pokes (foo INT, bar STRING);
   > LOAD DATA LOCAL INPATH '/opt/hive/examples/files/kv1.txt' OVERWRITE INTO TABLE pokes;
 ```
-
-Then query it from PrestoDB. You can get [presto.jar](https://prestodb.io/docs/current/installation/cli.html) from PrestoDB website:
-```
-  $ wget https://repo1.maven.org/maven2/com/facebook/presto/presto-cli/0.183/presto-cli-0.183-executable.jar
-  $ mv presto-cli-0.183-executable.jar presto.jar
-  $ chmod +x presto.jar
-  $ ./presto.jar --server localhost:8080 --catalog hive --schema default
-  presto> select * from pokes;
-```
-
-## Contributors
-* Ivan Ermilov [@earthquakesan](https://github.com/earthquakesan) (maintainer)
-* Yiannis Mouchakis [@gmouchakis](https://github.com/gmouchakis)
-* Ke Zhu [@shawnzhu](https://github.com/shawnzhu)
