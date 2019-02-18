@@ -4,7 +4,7 @@ services:
   hive-server:
     image: bde2020/hive:2.3.2-postgresql-metastore
     networks:
-      - my-net    
+      - shared    
     env_file:
       - ./hadoop-hive.env
     environment:
@@ -15,7 +15,7 @@ services:
   hive-metastore:
     image: bde2020/hive:2.3.2-postgresql-metastore
     networks:
-      - my-net    
+      - shared    
     env_file:
       - ./hadoop-hive.env
     command: /opt/hive/bin/hive --service metastore
@@ -26,8 +26,9 @@ services:
   hive-metastore-postgresql:
     image: bde2020/hive-metastore-postgresql:2.3.0
     networks:
-      - my-net    
+      - shared    
 
 networks:
-  my-net:
-    driver: bridge
+  shared: 
+    external:
+      name: shared
