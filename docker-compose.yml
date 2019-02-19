@@ -2,7 +2,8 @@ version: "3"
 
 services:
   hive-server:
-    image: bde2020/hive:2.3.2-postgresql-metastore
+    #image: bde2020/hive:2.3.2-postgresql-metastore
+    image: mfisser/hive:latest
     networks:
       - shared    
     env_file:
@@ -13,7 +14,7 @@ services:
     ports:
       - "10000:10000"
   hive-metastore:
-    image: bde2020/hive:2.3.2-postgresql-metastore
+    image: mfisser/hive:latest
     networks:
       - shared    
     env_file:
