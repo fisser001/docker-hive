@@ -92,7 +92,7 @@ services:
     ports:
       - "9083:9083"
   hive-metastore-postgresql:
-    image: mfisser/postgres:1.0.0-for-hive-metastore
+    image: mfisser/postgres:1.0.0-hive-for-postgresql-metastore
 
 volumes:
   hadoop_namenode:
