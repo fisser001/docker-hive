@@ -9,7 +9,7 @@ services:
     environment:
       - CLUSTER_NAME=test
     env_file:
-      - ./hadoop.env
+      - ./hadoop-hive.env
 
   resourcemanager:
     image: mfisser/hadoop-resourcemanager:1.0.0-hadoop2.7.6-java8
@@ -19,7 +19,7 @@ services:
       - datanode1
       - datanode2
     env_file:
-      - ./hadoop.env
+      - ./hadoop-hive.env
   
   historyserver:
     image: mfisser/hadoop-historyserver:1.0.0-hadoop2.7.6-java8
@@ -31,7 +31,7 @@ services:
     volumes:
       - hadoop_historyserver:/hadoop/yarn/timeline
     env_file:
-      - ./hadoop.env
+      - ./hadoop-hive.env
   
   nodemanager1:
     image: mfisser/hadoop-nodemanager:1.0.0-hadoop2.7.6-java8
@@ -41,7 +41,7 @@ services:
       - datanode1
       - datanode2
     env_file:
-      - ./hadoop.env
+      - ./hadoop-hive.env
   
   datanode1:
     image: mfisser/hadoop-datanode:1.0.0-hadoop2.7.6-java8
@@ -51,7 +51,7 @@ services:
     volumes:
       - hadoop_datanode1:/hadoop/dfs/data
     env_file:
-      - ./hadoop.env  
+      - ./hadoop-hive.env  
 
   datanode2:
     image: mfisser/hadoop-datanode:1.0.0-hadoop2.7.6-java8
@@ -61,7 +61,7 @@ services:
     volumes:
       - hadoop_datanode2:/hadoop/dfs/data
     env_file:
-      - ./hadoop.env     
+      - ./hadoop-hive.env     
 
   datanode3:
     image: mfisser/hadoop-datanode:1.0.0-hadoop2.7.6-java8
@@ -71,7 +71,7 @@ services:
     volumes:
       - hadoop_datanode3:/hadoop/dfs/data
     env_file:
-      - ./hadoop.env
+      - ./hadoop-hive.env
 
   hive-server:
     image: mfisser/hive:1.0.0-hive2.3.2-for-postgresql-metastore 
