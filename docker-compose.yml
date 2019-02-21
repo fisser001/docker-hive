@@ -1,11 +1,80 @@
 version: "3"
 
 services:
+  namenode:
+    image: mfisser/hadoop-namenode:1.0.0-hadoop2.7.6-java8
+    container_name: namenode
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop.env
+
+  resourcemanager:
+    image: mfisser/hadoop-resourcemanager:1.0.0-hadoop2.7.6-java8
+    container_name: resourcemanager
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+    env_file:
+      - ./hadoop.env
+  
+  historyserver:
+    image: mfisser/hadoop-historyserver:1.0.0-hadoop2.7.6-java8
+    container_name: historyserver
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+    volumes:
+      - hadoop_historyserver:/hadoop/yarn/timeline
+    env_file:
+      - ./hadoop.env
+  
+  nodemanager1:
+    image: mfisser/hadoop-nodemanager:1.0.0-hadoop2.7.6-java8
+    container_name: nodemanager1
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+    env_file:
+      - ./hadoop.env
+  
+  datanode1:
+    image: mfisser/hadoop-datanode:1.0.0-hadoop2.7.6-java8
+    container_name: datanode1
+    depends_on:
+      - namenode
+    volumes:
+      - hadoop_datanode1:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env  
+
+  datanode2:
+    image: mfisser/hadoop-datanode:1.0.0-hadoop2.7.6-java8
+    container_name: datanode2
+    depends_on:
+      - namenode
+    volumes:
+      - hadoop_datanode2:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env     
+
+  datanode3:
+    image: mfisser/hadoop-datanode:1.0.0-hadoop2.7.6-java8
+    container_name: datanode3
+    depends_on:
+      - namenode
+    volumes:
+      - hadoop_datanode3:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env
+
   hive-server:
-    #image: bde2020/hive:2.3.2-postgresql-metastore
-    image: mfisser/hive:latest
-    networks:
-      - shared    
+    image: mfisser/hive:1.0.0-hive2.3.2-for-postgresql-metastore 
     env_file:
       - ./hadoop-hive.env
     environment:
@@ -14,22 +83,20 @@ services:
     ports:
       - "10000:10000"
   hive-metastore:
-    image: mfisser/hive:latest
-    networks:
-      - shared    
+    image: mfisser/hive:1.0.0-hive2.3.2-for-postgresql-metastore 
     env_file:
       - ./hadoop-hive.env
     command: /opt/hive/bin/hive --service metastore
     environment:
-      SERVICE_PRECONDITION: "namenode:50070 hive-metastore-postgresql:5432"
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 datanode1:50075 datanode2:50075 hive-metastore-postgresql:5432"
     ports:
       - "9083:9083"
   hive-metastore-postgresql:
-    image: bde2020/hive-metastore-postgresql:2.3.0
-    networks:
-      - shared    
+    image: mfisser/postgres:1.0.0-for-hive-metastore
 
-networks:
-  shared: 
-    external:
-      name: shared
+volumes:
+  hadoop_namenode:
+  hadoop_datanode1:
+  hadoop_datanode2:
+  hadoop_datanode3:
+  hadoop_historyserver:    

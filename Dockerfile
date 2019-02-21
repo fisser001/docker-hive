@@ -1,4 +1,4 @@
-FROM bde2020/hadoop-base:2.0.0-hadoop2.7.4-java8
+FROM mfisser/hadoop-base:1.0.0-hadoop2.7.6-java8
 
 # Allow buildtime config of HIVE_VERSION
 ARG HIVE_VERSION
