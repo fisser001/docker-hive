@@ -6,7 +6,7 @@ hadoop fs -chmod g+w   /tmp
 hadoop fs -chmod g+w   /user/hive/warehouse
 
 
-hdfs dfs -mkdir -p apps/tez/
+hdfs dfs -mkdir -p /apps/tez/
 
 hdfs dfs -put /tmp/tez.tar.gz /apps/tez/
 hdfs dfs -chown -R $HDFS_USER:$HADOOP_USER /apps
