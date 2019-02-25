@@ -15,4 +15,4 @@ hadoop fs -chmod g+w /apps/tez
 hadoop fs -chmod g+w /apps/tez/*
 hdfs dfs -chmod -R 777 /apps/tez/
 cd $HIVE_HOME/bin
-./hiveserver2 --hiveconf hive.server2.enable.doAs=false
+./hiveserver2 --hiveconf hive.server2.enable.doAs=true
