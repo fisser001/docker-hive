@@ -3,6 +3,12 @@
 # Set some sensible defaults
 export CORE_CONF_fs_defaultFS=${CORE_CONF_fs_defaultFS:-hdfs://`hostname -f`:8020}
 
+if [ -z "$HIVE_AUX_JARS_PATH" ]; then
+export HIVE_AUX_JARS_PATH="$TEZ_JARS"
+else
+export HIVE_AUX_JARS_PATH="$HIVE_AUX_JARS_PATH:$TEZ_JARS"
+fi
+
 function addProperty() {
   local path=$1
   local name=$2
@@ -33,7 +39,7 @@ function configure() {
 
 configure $HADOOP_HOME/etc/hadoop/core-site.xml core CORE_CONF
 configure $HADOOP_HOME/etc/hadoop/hdfs-site.xml hdfs HDFS_CONF
-configure $HADOOP_HOME/etc/hadoop/yarn-site.xml yarn YARN_CONF
+#configure $HADOOP_HOME/etc/hadoop/yarn-site.xml yarn YARN_CONF
 configure $HADOOP_HOME/etc/hadoop/httpfs-site.xml httpfs HTTPFS_CONF
 configure $HADOOP_HOME/etc/hadoop/kms-site.xml kms KMS_CONF
 configure $HADOOP_HOME/etc/hadoop/mapred-site.xml mapred MAPRED_CONF
@@ -51,10 +57,10 @@ if [ "$MULTIHOMED_NETWORK" = "1" ]; then
     addProperty $HADOOP_HOME/etc/hadoop/hdfs-site.xml dfs.datanode.use.datanode.hostname true
 
     # YARN
-    addProperty $HADOOP_HOME/etc/hadoop/yarn-site.xml yarn.resourcemanager.bind-host 0.0.0.0
-    addProperty $HADOOP_HOME/etc/hadoop/yarn-site.xml yarn.nodemanager.bind-host 0.0.0.0
-    addProperty $HADOOP_HOME/etc/hadoop/yarn-site.xml yarn.nodemanager.bind-host 0.0.0.0
-    addProperty $HADOOP_HOME/etc/hadoop/yarn-site.xml yarn.timeline-service.bind-host 0.0.0.0
+   # addProperty $HADOOP_HOME/etc/hadoop/yarn-site.xml yarn.resourcemanager.bind-host 0.0.0.0
+   # addProperty $HADOOP_HOME/etc/hadoop/yarn-site.xml yarn.nodemanager.bind-host 0.0.0.0
+   # addProperty $HADOOP_HOME/etc/hadoop/yarn-site.xml yarn.nodemanager.bind-host 0.0.0.0
+   # addProperty $HADOOP_HOME/etc/hadoop/yarn-site.xml yarn.timeline-service.bind-host 0.0.0.0
 
     # MAPRED
     addProperty $HADOOP_HOME/etc/hadoop/mapred-site.xml yarn.nodemanager.bind-host 0.0.0.0
