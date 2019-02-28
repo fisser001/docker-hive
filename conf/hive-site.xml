@@ -15,4 +15,25 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 --><configuration>
+<property><name>hive.metastore.uris</name><value>thrift://hive-metastore:9083</value></property>
+<property><name>hive.execution.engine</name><value>tez</value></property>
+<property><name>datanucleus.autoCreateSchema</name><value>false</value></property>
+<property><name>javax.jdo.option.ConnectionURL</name><value>jdbc:postgresql://hive-metastore-postgresql/metastore</value></property>
+<property><name>javax.jdo.option.ConnectionDriverName</name><value>org.postgresql.Driver</value></property>
+<property><name>javax.jdo.option.ConnectionPassword</name><value>hive</value></property>
+<property><name>javax.jdo.option.ConnectionUserName</name><value>hive</value></property>
+<property><name>hive.server2.tez.default.queues=default</name><value>
+<property><name>hive.server2.tez.initialize.default.sessions</name><value>true</value></property>
+<property><name>hive.tez.auto.reducer.parallelism</name><value>false</value></property>
+<property><name>hive.tez.container.max.java.heap.fraction</name><value>0.8</value></property>
+<property><name>hive.tez.container.size</name><value>-1</value></property>
+<property><name>hive.tez.cpu.vcores</name><value>-1</value></property>
+<property><name>hive.tez.max.partition.factor</name><value>2.0</value></property>
+<property><name>hive.tez.min.partition.factor</name><value>0.25</value></property>
+<property><name>hive.tez.smb.number.waves</name><value>0.5</value></property>
+<property><name>hive.tez.task.scale.memory.reserve-fraction.min</name><value>0.3</value></property>
+<property><name>hive.tez.task.scale.memory.reserve.fraction</name><value>-1.0</value></property>
+<property><name>hive.tez.task.scale.memory.reserve.fraction.max</name><value>0.5</value></property>
+<property><name>hive.vectorized.execution.enabled</name><value>true</value></property>
+<property><name>hive.vectorized.execution.reduce.enabled</name><value>true</value></property>
 </configuration>
