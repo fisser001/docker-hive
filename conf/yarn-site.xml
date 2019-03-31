@@ -42,6 +42,6 @@
 <property><name>yarn.scheduler.maximum-allocation-mb</name><value>10064</value></property>
 <property><name>yarn.scheduler.maximum-allocation-vcores</name><value>16</value></property>
 <property><name>yarn.scheduler.minimum-allocation-mb</name><value>4048</value></property>
-<property><name>yarn.scheduler.minimum-allocation-vcores</name><value>8</value></property>
+<property><name>yarn.scheduler.minimum-allocation-vcores</name><value>16</value></property>
 <property><name>yarn.resourcemanager.system-metrics-publisher.enabled</name><value>true</value></property>
 </configuration>

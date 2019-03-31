@@ -83,6 +83,7 @@ RUN chmod +x /usr/local/bin/startup.sh
 
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
+VOLUME /data/results/
 
 EXPOSE 10000
 EXPOSE 10002

@@ -24,6 +24,8 @@ services:
   historyserver:
     image: mfisser/hadoop-historyserver:1.0.0-hadoop2.7.6-java8
     container_name: historyserver
+    volumes:
+      - hive:/data/results    
     depends_on:
       - namenode
       - datanode1
@@ -42,6 +44,16 @@ services:
       - datanode2
     env_file:
       - ./hadoop-hive.env
+
+  nodemanager2:
+    image: mfisser/hadoop-nodemanager:1.0.0-hadoop2.7.6-java8
+    container_name: nodemanager2
+    depends_on:
+      - namenode
+      - datanode1
+      - datanode2
+    env_file:
+      - ./hadoop-hive.env      
   
   datanode1:
     image: mfisser/hadoop-datanode:1.0.0-hadoop2.7.6-java8
@@ -99,4 +111,5 @@ volumes:
   hadoop_datanode1:
   hadoop_datanode2:
   hadoop_datanode3:
-  hadoop_historyserver:    
+  hadoop_historyserver:   
+  hive:
