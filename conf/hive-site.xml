@@ -40,5 +40,6 @@
 <property><name>hive.vectorized.groupby.checkinterval</name><value>10000</value></property>
 <property><name>hive.prewarm.numcontainers</name><value>3</value></property>
 <property><name>mapred.tez.java.opts</name><value>-Xmx2560m</value></property>
-<property><name>hive.tez.container.size</name><value>2560</value></property>
+<property><name>hive.tez.container.size</name><value>-1</value></property>
+<property><name>hive.tez.cpu.vcores</name><value>-1</value></property>
 </configuration>

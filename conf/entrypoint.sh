@@ -31,7 +31,7 @@ function configure() {
     done
 }
 
-configure $HADOOP_HOME/etc/hadoop/core-site.xml core CORE_CONF
+#configure $HADOOP_HOME/etc/hadoop/core-site.xml core CORE_CONF
 #configure $HADOOP_HOME/etc/hadoop/hdfs-site.xml hdfs HDFS_CONF
 #configure $HADOOP_HOME/etc/hadoop/yarn-site.xml yarn YARN_CONF
 configure $HADOOP_HOME/etc/hadoop/httpfs-site.xml httpfs HTTPFS_CONF
