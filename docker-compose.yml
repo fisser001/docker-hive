@@ -70,8 +70,7 @@ services:
     container_name: datanode2
     depends_on:
       - namenode
-    volumes:
-      - hadoop_datanode2:/hadoop/dfs/data
+
     env_file:
       - ./hadoop-hive.env     
 
@@ -86,7 +85,11 @@ services:
       - ./hadoop-hive.env
 
   hive-server:
-    image: mfisser/hive:1.0.0-hive2.3.2-for-postgresql-metastore 
+    image: mfisser/hive:1.0.0-hive2.3.2-for-postgresql-metastore
+     volumes:
+      - type: volume
+        source: mydata
+        target: /data/mydata
     env_file:
       - ./hadoop-hive.env
     environment:
@@ -112,4 +115,4 @@ volumes:
   hadoop_datanode2:
   hadoop_datanode3:
   hadoop_historyserver:   
-  hive:
+  mydata:
