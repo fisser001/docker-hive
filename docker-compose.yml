@@ -157,7 +157,7 @@ volumes:
     external: true
   hive_metastore_postgres:
     external: true
-  resourcemanager:
+  hadoop_resourcemanager:
     external: true
   hadoop_nodemanager1:
     external: true
