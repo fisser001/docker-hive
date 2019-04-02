@@ -137,8 +137,8 @@ services:
     image: mfisser/postgres:1.0.0-hive-for-postgresql-metastore
     volumes:
      - type: volume
-       source: hive_metastore_postgres
-       target: /data/hive/postgres   
+       source: pgdata
+       target: /var/lib/postgresql/data 
 
 volumes:
   hadoop_namenode:
@@ -155,7 +155,7 @@ volumes:
     external: true
   hive_metastore:
     external: true
-  hive_metastore_postgres:
+  pgdata:
     external: true
   hadoop_resourcemanager:
     external: true
