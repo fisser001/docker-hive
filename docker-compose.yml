@@ -87,7 +87,7 @@ services:
   hive-server:
     image: mfisser/hive:1.0.0-hive2.3.2-for-postgresql-metastore
     volumes:
-     - type: volume
+     - type: "volume"
        source: mydata
        target: /data/mydata
     env_file:
