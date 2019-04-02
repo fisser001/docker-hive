@@ -16,6 +16,10 @@ services:
   resourcemanager:
     image: mfisser/hadoop-resourcemanager:1.0.0-hadoop2.7.6-java8
     container_name: resourcemanager
+    volumes:
+      - type: volume
+        source: hadoop_resourcemanager
+        target: /hadoop/resourcemanager
     depends_on:
       - namenode
       - datanode1
@@ -40,6 +44,10 @@ services:
   nodemanager1:
     image: mfisser/hadoop-nodemanager:1.0.0-hadoop2.7.6-java8
     container_name: nodemanager1
+    volumes:
+      - type: volume
+        source: hadoop_nodemanager1
+        target: /hadoop/nodemanager1    
     depends_on:
       - namenode
       - datanode1
@@ -50,6 +58,10 @@ services:
   nodemanager2:
     image: mfisser/hadoop-nodemanager:1.0.0-hadoop2.7.6-java8
     container_name: nodemanager2
+    volumes:
+      - type: volume
+        source: hadoop_nodemanager2
+        target: /hadoop/nodemanager2        
     depends_on:
       - namenode
       - datanode1
@@ -144,4 +156,10 @@ volumes:
   hive_metastore:
     external: true
   hive_metastore_postgres:
+    external: true
+  resourcemanager:
+    external: true
+  hadoop_nodemanager1:
+    external: true
+  hadoop_nodemanager2:
     external: true
