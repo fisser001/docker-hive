@@ -116,3 +116,4 @@ volumes:
   hadoop_datanode3:
   hadoop_historyserver:   
   mydata:
+    external: true
