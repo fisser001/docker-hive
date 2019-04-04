@@ -46,7 +46,7 @@
 <property><name>hive.optimize.skewjoin</name><value>true</value></property>
 <property><name>hive.skewjoin.key</name><value>100000</value></property>
 <property><name>hive.skewjoin.mapjoin.map.tasks</name><value>10000</value></property>
-<property><name>hive.skewjoin.mapjoin.min.split</name><value>33554432</value><description></property>
+<property><name>hive.skewjoin.mapjoin.min.split</name><value>33554432</value>/property>
 <property><name>hive.limit.optimize.enable</name><value>true</value></property>
 <property><name>hive.limit.row.max.size</name><value>100000</value></property>
 <property><name>hive.limit.optimize.limit.file</name><value>10</value></property>
