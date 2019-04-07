@@ -38,8 +38,8 @@
 <property><name>yarn.timeline-service.bind-host</name><value>0.0.0.0</value></property>
 <property><name>yarn.nodemanager.vmem-check-enabled</name><value>false</value></property>
 <property><name>yarn.nodemanager.vmem-pmem-ratio</name><value>2.1</value></property>
-<property><name>yarn.scheduler.maximum-allocation-mb</name><value>8192</value></property>
-<property><name>yarn.scheduler.maximum-allocation-vcores</name><value>6</value></property>
+<property><name>yarn.scheduler.maximum-allocation-mb</name><value>16384</value></property>
+<property><name>yarn.scheduler.maximum-allocation-vcores</name><value>20</value></property>
 <property><name>yarn.scheduler.minimum-allocation-mb</name><value>1024</value></property>
 <property><name>yarn.scheduler.minimum-allocation-vcores</name><value>1</value></property>
 <property><name>yarn.nodemanager.resource.memory-mb</name><value>10240</value></property>
